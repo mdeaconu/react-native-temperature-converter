@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import { ImageBackground, Text, View } from "react-native";
+import { ImageBackground, View } from "react-native";
 import { s } from "./App.style";
 import hotBackground from "./assets/hot.png"
 import { Input } from "./components/Input/Input";
 import { DisplayTemperature } from "./components/DisplayTemperature/DisplayTemperature";
 import { UNITS, convertTemperatureTo, getOppositeUnit } from "./utils/temperature";
+import { ButtonConvert } from "./components/ButtonConvert/ButtonConvert";
 
 export default function App() {
   const [inputValue, setInputValue] = useState(0);
@@ -34,7 +35,7 @@ export default function App() {
               onChange={setInputValue}
               defaultValue={0}
             />
-            <Text>Button</Text>
+            <ButtonConvert unit={currentUnit} onPress={() => setCurrentUnit(oppositeUnit)} />
           </View>
         </SafeAreaView>
       </SafeAreaProvider>
