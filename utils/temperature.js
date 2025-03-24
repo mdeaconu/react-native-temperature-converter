@@ -26,4 +26,19 @@ function getOppositeUnit(unit) {
   return unit === UNITS.celcius ? UNITS.fahrenheit : UNITS.celcius;
 }
 
-export { UNITS, convertTemperatureTo, getOppositeUnit };
+/**
+ * @param {number} temperature 
+ * @param {UNITS} unit 
+ * @returns `true` if the temperature is below certain value (0 for celcius and 32 for fahrenheit).
+ */
+function isIceTemperature(temperature, unit) {
+  if (unit === UNITS.celcius) {
+    return temperature <= 0;
+  } else if (unit === UNITS.fahrenheit) {
+    return temperature <= 32;
+  } else {
+    throw new Error("Invalid unit");
+  }
+}
+
+export { UNITS, convertTemperatureTo, getOppositeUnit, isIceTemperature };
